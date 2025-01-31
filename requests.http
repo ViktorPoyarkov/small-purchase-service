@@ -9,6 +9,16 @@ Content-Type: application/json
   "couponCode": "D15"
 }
 
+### Invalid Tax Number
+POST http://127.0.0.1:8337/calculate-price
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "INVALID",
+  "couponCode": "D15"
+}
+
 ### Execute Purchase
 POST http://127.0.0.1:8337/purchase
 Accept: application/json
@@ -19,4 +29,15 @@ Content-Type: application/json
   "taxNumber": "IT12345678900",
   "couponCode": "D15",
   "paymentProcessor": "paypal"
+}
+
+### Unknown Payment Processor
+POST http://127.0.0.1:8337/purchase
+Content-Type: application/json
+
+{
+  "product": 1,
+  "taxNumber": "FRYY123456789",
+  "couponCode": "P10",
+  "paymentProcessor": "unknown_processor"
 }
